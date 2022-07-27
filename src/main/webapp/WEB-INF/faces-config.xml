@@ -4,12 +4,15 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
     version="2.3">
- 
-	
-	 <application>
+ 	 <application>
 		<system-event-listener>
 			   <system-event-listener-class>thread.BackgroundJobManager</system-event-listener-class>
 			   <system-event-class>javax.faces.event.PostConstructApplicationEvent</system-event-class>    					
 		</system-event-listener> 	 
 	</application>
+	 <managed-bean>
+	 	<managed-bean-name>mainBean</managed-bean-name>
+	 	<managed-bean-class>controller.MainBean</managed-bean-class>
+	 	<managed-bean-scope>view</managed-bean-scope>
+	 </managed-bean>
 </faces-config>

@@ -8,12 +8,22 @@ public class Note implements Serializable
 
 	private static final long serialVersionUID = 1L;
 
+	private int id;
 	private String name;
 	private String message;
 	private Date dateNoti;
 	private Date createDate;
 	private Date updateDate;
+	private boolean sendNoti;
 	
+	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
@@ -44,4 +54,12 @@ public class Note implements Serializable
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
+	public boolean isSendNoti() {
+		return sendNoti;
+	}
+	public void setSendNoti(boolean sendNoti) {
+		this.sendNoti = sendNoti;
+	}
+	
+	
 }

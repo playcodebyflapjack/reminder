@@ -16,24 +16,36 @@ public class DB {
 	private String dbName;
 
 	private DB() {
+		
 		this.dbHost = System.getProperty("DB_HOST");
 		this.dbPort = Integer.parseInt(System.getProperty("DB_PORT"));
 		this.dbUser = System.getProperty("DB_USER");
 		this.dbPass = System.getProperty("DB_PASS");
 		this.dbName = System.getProperty("DB_NAME");
+		
+		try 
+		{
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		}  
+		
 	}
 
 	public static DB getInstance() {
-		if (db == null) {
+		if (db == null) 
+		{
 			db = new DB();
 		}
 		return db;
 	}
 
-	public Connection getConnection() throws SQLException, SQLTimeoutException {
-		String configDB = "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName + "," + dbUser + "," + dbPass;
+	public Connection getConnection() throws SQLException, SQLTimeoutException, ClassNotFoundException {
+		
+		String configDB = "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName;
 
-		return DriverManager.getConnection(configDB);
+		return DriverManager.getConnection(configDB,dbUser,dbPass);
 	}
 
 	public void closeConnection(Connection con) {

@@ -19,7 +19,7 @@ public class BackgroundJobManager implements SystemEventListener {
 	{
 		System.out.println("init");
 		scheduler = Executors.newSingleThreadScheduledExecutor();
-		scheduler.scheduleAtFixedRate(new SendNotificationJob(), 0, 1, TimeUnit.SECONDS);
+		scheduler.scheduleAtFixedRate(new SendNotificationJob(), 0, 1, TimeUnit.DAYS);
 	}
 
 	public void destroy() 
